@@ -30,7 +30,9 @@ public class Program
         {
             case "1":
                 Console.WriteLine("\r\nPalindromes selected");
-                Palindromes palindromes = new Palindromes();
+                DependencyInjectionContainer.SetPalindromesUserInteraction(new PalindromesUserInteraction());
+                var palindromes = new Palindromes(DependencyInjectionContainer.GetPalindromesUserInteraction());
+
                 palindromes.Run();
 
                 break;

@@ -1,6 +1,11 @@
 ﻿namespace Problems.UserInteraction
 {
-    public class PalindromesUserInteraction : IUserInteraction
+    public interface IPalindromesUserInteraction : IUserInteraction
+    {
+        public string GetOriginalInput();
+    }
+
+    public class PalindromesUserInteraction : IPalindromesUserInteraction
     {
         public string OriginalInput;
         public PalindromesUserInteraction()
@@ -19,6 +24,11 @@
         public int GetIntInput()
         {
             throw new NotImplementedException();
+        }
+
+        public string GetOriginalInput()
+        {
+            return OriginalInput;
         }
 
         public string GetStringInput()

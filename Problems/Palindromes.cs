@@ -5,13 +5,18 @@ namespace Problems.Problems
 {
     public class Palindromes
     {
-        PalindromesUserInteraction palUserInteract = new PalindromesUserInteraction();
+        public IPalindromesUserInteraction PalindromesUserInteraction { get; }
+
+        public Palindromes(IPalindromesUserInteraction palindromesUserInteraction)
+        {
+            PalindromesUserInteraction = palindromesUserInteraction;
+        }
 
         public void Run()
         {
-            var result = IsPalindrome(palUserInteract.OriginalInput);
+            var result = IsPalindrome(PalindromesUserInteraction.GetOriginalInput());
 
-            palUserInteract.DisplayResult(result);
+            PalindromesUserInteraction.DisplayResult(result);
         }
 
         /// <summary>

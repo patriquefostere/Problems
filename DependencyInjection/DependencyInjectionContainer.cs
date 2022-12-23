@@ -27,6 +27,18 @@ namespace Problems.LearningDI
         {
             return CoinExchangeUserInteraction;
         }
+
+        private static IPalindromesUserInteraction PalindromesUserInteraction;
+
+        public static void SetPalindromesUserInteraction(IPalindromesUserInteraction coinExchangeUserInteraction)
+        {
+            PalindromesUserInteraction = coinExchangeUserInteraction;
+        }
+
+        public static IPalindromesUserInteraction GetPalindromesUserInteraction()
+        {
+            return PalindromesUserInteraction;
+        }
     }
 }
 
