@@ -1,11 +1,22 @@
 ﻿namespace Problems.UserInteraction
 {
-    public class FibonacciUserInteraction : IUserInteraction
+    public interface IFibonacciUserInteraction : IUserInteraction
+    {
+        public void HandleOverFlowException(OverflowException ex);
+        public int GetOriginalInput();
+    }
+
+    public class FibonacciUserInteraction : IFibonacciUserInteraction
     {
         public int OriginalInput;
         public FibonacciUserInteraction()
         {
             OriginalInput = GetIntInput();
+        }
+
+        public int GetOriginalInput()
+        {
+            return OriginalInput;
         }
 
         public void DisplayResult(object result)

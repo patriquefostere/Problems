@@ -4,21 +4,47 @@ namespace Problems.Problems
 {
     public class Fibonacci
     {
-        FibonacciUserInteraction fibUserInteract = new FibonacciUserInteraction();
+        private readonly IFibonacciUserInteraction _interaction;
 
-
-
-        private void AttemptSum(long[] fib)
+        public Fibonacci(IFibonacciUserInteraction interaction)
         {
+            _interaction = interaction;
+        }
+
+        public void Run()
+        {
+            var iterations = _interaction.GetOriginalInput();
+
+            if (iterations == 0 || iterations == 1)
+            {
+                _interaction.DisplayResult(0);
+            }
+            else
+            {
+                var fib = GenerateFib(iterations);
+
+                var sum = AttemptSum(fib);
+
+                if(sum != null) _interaction.DisplayResult(sum);
+
+            }
+        }
+
+        private long? AttemptSum(long[] fib)
+        {
+            long? sum = null;
             try
             {
-                var sum = fib.Sum();
-                fibUserInteract.DisplayResult(sum);
+                sum = fib.Sum();
             }
             catch (OverflowException ex)
             {
-                fibUserInteract.HandleOverFlowException(ex);
+                _interaction.HandleOverFlowException(ex);
             }
+
+            sum = fib.Sum();
+
+            return sum;
         }
 
         private static long[] GenerateFib(int iterations)
@@ -34,22 +60,6 @@ namespace Problems.Problems
             }
 
             return fib;
-        }
-
-        public void Run()
-        {
-            var iterations = fibUserInteract.OriginalInput;
-
-            if (iterations == 0 || iterations == 1)
-            {
-                fibUserInteract.DisplayResult(0);
-            }
-            else
-            {
-                var fib = GenerateFib(iterations);
-
-                AttemptSum(fib);
-            }
         }
     }
 }

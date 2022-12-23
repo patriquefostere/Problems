@@ -31,7 +31,7 @@
 
         private static string GetBadDataInputMessage(bool allowZero)
         {
-            var nonZeroString = allowZero ? "" : "non-zero ";
+            var nonZeroString = allowZero ? "" : " non-zero";
             return $"Invalid input - must be a positive{nonZeroString} integer.";
         }
     }

@@ -1,18 +1,21 @@
-﻿namespace Problems.LearningDI
+﻿using Problems.UserInteraction;
+
+namespace Problems.LearningDI
 {
     public static class DependencyInjectionContainer
     {
-        private static IDatabaseConnection _databaseConnection;
+        private static IFibonacciUserInteraction FibonacciUserInteraction;
 
-        public static void SetDatabaseConnection(IDatabaseConnection databaseConnection)
+        public static void SetFibonacciUserInteraction(IFibonacciUserInteraction fibonacciUserInteraction)
         {
-            _databaseConnection = databaseConnection;
+            FibonacciUserInteraction = fibonacciUserInteraction;
         }
 
-        public static IDatabaseConnection GetDatabaseConnection()
+        public static IFibonacciUserInteraction GetFibonacciUserInteraction()
         {
-            return _databaseConnection;
+            return FibonacciUserInteraction;
         }
+
     }
 }
 

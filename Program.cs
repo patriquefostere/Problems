@@ -1,5 +1,6 @@
 ﻿// See https://aka.ms/new-console-template for more information
 
+using Problems.LearningDI;
 using Problems.Problems;
 using Problems.UserInteraction;
 
@@ -41,7 +42,10 @@ public class Program
 
             case "3":
                 Console.WriteLine("\r\nFibonacci selected");
-                Fibonacci fibonacci = new Fibonacci();
+
+                DependencyInjectionContainer.SetFibonacciUserInteraction(new FibonacciUserInteraction());
+                var fibonacci = new Fibonacci(DependencyInjectionContainer.GetFibonacciUserInteraction());
+
                 fibonacci.Run();
                 break;
 
