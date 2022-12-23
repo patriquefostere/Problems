@@ -4,15 +4,20 @@ namespace Problems.Problems
 {
     public class CoinExchange
     {
-        CoinExchangeUserInteraction coinExUserInteract = new CoinExchangeUserInteraction();
+
+        public CoinExchange(ICoinExchangeUserInteraction _coinExchangeUserInteraction) 
+        {
+            coinExchangeUserInteraction = _coinExchangeUserInteraction;
+        }
 
         private readonly int[] coins = new int[] { 1, 2, 5, 10, 20, 50, 100 };
+        private readonly ICoinExchangeUserInteraction coinExchangeUserInteraction;
 
         public void Run()
         {
-            var necessaryCoins = GetNecessaryCoins(coinExUserInteract.OriginalInput);
+            var necessaryCoins = GetNecessaryCoins(coinExchangeUserInteraction.GetOriginalInput());
 
-            coinExUserInteract.DisplayResult(necessaryCoins);
+            coinExchangeUserInteraction.DisplayResult(necessaryCoins);
         }
 
         private int[] GetNecessaryCoins(int input)

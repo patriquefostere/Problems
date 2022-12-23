@@ -1,11 +1,21 @@
 ﻿namespace Problems.UserInteraction
 {
-    public class CoinExchangeUserInteraction : IUserInteraction
+    public interface ICoinExchangeUserInteraction : IUserInteraction
+    {
+        public int GetOriginalInput();
+    }
+
+    public class CoinExchangeUserInteraction : ICoinExchangeUserInteraction
     {
         public int OriginalInput;
         public CoinExchangeUserInteraction()
         {
             OriginalInput = GetIntInput();
+        }
+
+        public int GetOriginalInput()
+        {
+            return OriginalInput;
         }
 
         public void DisplayResult(object result)

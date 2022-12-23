@@ -16,6 +16,17 @@ namespace Problems.LearningDI
             return FibonacciUserInteraction;
         }
 
+        private static ICoinExchangeUserInteraction CoinExchangeUserInteraction;
+
+        public static void SetCoinExchangeUserInteraction(ICoinExchangeUserInteraction coinExchangeUserInteraction)
+        {
+            CoinExchangeUserInteraction = coinExchangeUserInteraction;
+        }
+
+        public static ICoinExchangeUserInteraction GetCoinExchangeUserInteraction()
+        {
+            return CoinExchangeUserInteraction;
+        }
     }
 }
 

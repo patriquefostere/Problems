@@ -51,7 +51,9 @@ public class Program
 
             case "4":
                 Console.WriteLine("\r\nCoin Exchange selected");
-                CoinExchange coinExchange = new CoinExchange();
+
+                DependencyInjectionContainer.SetCoinExchangeUserInteraction(new CoinExchangeUserInteraction());
+                var coinExchange = new CoinExchange(DependencyInjectionContainer.GetCoinExchangeUserInteraction());
                 coinExchange.Run();
 
                 break;
